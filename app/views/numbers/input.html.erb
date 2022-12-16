@@ -3,7 +3,7 @@
 <%= form_with url: numbers_path, method: :post do |form| %>
   <%= form.label :n, "n:".upcase %>
   <%= form.number_field :n, in: 1..10**6, step: 1 %>
-  <%= form.submit "Выполнить" %>
+  <%= form.submit "Выполнить", id: "result-btn" %>
 <% end %>
 
 <div id="output">
