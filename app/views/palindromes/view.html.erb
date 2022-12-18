@@ -1,0 +1,15 @@
+<h3>Вы ввели число: <%= @n%></h3>
+<br/>
+<table style="border-collapse: collapse">
+  <tr style="border: 1px solid black"><th style="border: 1px solid black">Number in 10</th><th>Number in 2</th></tr>
+  <tbody>
+    <% @results.each do |b| %>
+      <tr style="border-color: 1px solid black">
+        <td style="border: 1px solid black"> <%= b %> </td>
+        <td style="border: 1px solid black"> <%= b.to_s(2) %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br/>
+<%= link_to 'Вернуться на страницу ввода', root_path %>
