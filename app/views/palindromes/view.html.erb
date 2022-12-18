@@ -1,2 +1,15 @@
-<h1>Palindromes#view</h1>
-<p>Find me in app/views/palindromes/view.html.erb</p>
+<h3>Вы ввели число: <%= @num%></h3>
+<br/>
+<table style="border-collapse: collapse">
+  <tr style="border: 1px solid black"><th style="border: 1px solid black">Number in 10</th><th>Number in 2</th></tr>
+  <tbody>
+    <% @result.each do |b| %>
+      <tr style="border-color: 1px solid black">
+        <td style="border: 1px solid black"> <%= b %> </td>
+        <td style="border: 1px solid black"> <%= b.to_s(2) %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br/>
+<%= link_to 'Вернуться на страницу ввода', palindromes_input_path %>
