@@ -5,14 +5,14 @@
 	<table id='login'>
 		<tr>
 			<td><label>Имя пользователя</label></td>
-			<td><%=f.text_field :username, require: true %><br/></td>
+			<td><%=f.text_field :username, require: true, id: 'Username' %><br/></td>
 		</tr>
 		<tr>
 			<td><label>Пароль</label></td>
-			<td><%=f.password_field :password, require: true%><br/></td>
+			<td><%=f.password_field :password, require: true, id: 'Password'%><br/></td>
 		</tr>
 		<tr>
-			<td><%=f.submit :password, value: 'Вход',require: true%></td>
+			<td><%=f.submit :password, value: 'Login',require: true%></td>
 		</tr>
 	</table>
 <%end%>

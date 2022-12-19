@@ -2,7 +2,7 @@
 
 <%= form_with url: "/palindromes/view", method: :get do |form| %>
   <div>
-  <%= form.label :n, "n:".upcase %>
+  <%= form.label :num, "n:".upcase %>
   <%= form.number_field :num, in: 1..10**6, step: 1 %>
   <%= form.submit "Выполнить" %>
 

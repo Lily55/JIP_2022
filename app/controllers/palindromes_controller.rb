@@ -4,7 +4,14 @@ class PalindromesController < ApplicationController
 
   def view
     @num = params[:num].to_i
-    @result = check_number(@num)
+    res = Number.find_by_num(@num)
+    if res
+      @result = ActiveSupport::JSON.decode(res.result)
+    else
+      @result = check_number(@num)
+      res = Number.create num: @num, result: ActiveSupport::JSON.encode(@result)
+      res.save
+    end
   end
 
   private

@@ -22,6 +22,11 @@
   </div>
 
   <div>
+    <%= form.label :password_confirmation, style: "display: block" %>
+    <%= form.password_field :password_confirmation %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>
