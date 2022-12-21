@@ -11,7 +11,60 @@
   </head>
 
   <body>
-    <%= link_to 'Новая статья', new_post_path%>
+
+    <%# <%= link_to 'Новая статья', new_post_path%> 
+        <header class="header">
+      <div class="header-content content-fluid">
+          <div class="logo">
+              
+              
+          </div>
+
+          <div class="name">
+              <div class="title">
+                  BEST при МГТУ им. Н. Э. Баумана
+              </div>
+              <div class="description">
+                  Board of European Students of Techonolgy
+              </div>
+          </div>
+
+          <div class="logo-mephi">
+              
+          </div>
+
+      </div>
+  </header>
+
+        <nav class = "top-menu" >
+      <ul class="top-menu-items content-fluid hr">
+        
+        <li class="item item-current">
+            <a>
+                <%= link_to "Главная", home_path %>
+            </a>
+        </li>
+    
+        <li class="item item-current">
+            <a href="/best/about">
+                <%= link_to "О нас", about_path%>
+            </a>
+        </li>
+    
+        <li class="item item-current">
+            <a>
+                <%= link_to "Традиции", traditions_path%>
+            </a>
+        </li>
+    
+        <li class="item item-current">
+            <a>
+                <%= link_to "Новости", news_path%>
+            </a>
+        </li>
+        
+      </ul>
+    </nav>
     <%= yield %>
   </body>
 </html>

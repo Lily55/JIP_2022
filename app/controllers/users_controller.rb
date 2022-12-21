@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
+    session[:current_time] = Time.now
     @user = User.new
   end
 
@@ -49,6 +50,8 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
+    flash[:alert] = "Вы действительно хотите удалить профиль?"
+
     @user.destroy
 
     respond_to do |format|
@@ -65,6 +68,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:username, :email, :password_digest, :status, :admin)
+      params.require(:user).permit(:username, :email, :password, :status, :admin, :password_confirmation)
     end
 end

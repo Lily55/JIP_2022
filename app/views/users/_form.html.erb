@@ -12,31 +12,26 @@
   <% end %>
 
   <div>
-    <%= form.label :username, style: "display: block" %>
+    <%= form.label :username, "Логин:", style: "display: block" %>
     <%= form.text_field :username %>
   </div>
 
   <div>
-    <%= form.label :email, style: "display: block" %>
+    <%= form.label :email, "Почта:",style: "display: block" %>
     <%= form.text_field :email %>
   </div>
 
   <div>
-    <%= form.label :password_digest, style: "display: block" %>
-    <%= form.text_field :password_digest %>
+    <%= form.label :password, "Пароль", style: "display: block" %>
+    <%= form.text_field :password%>
   </div>
 
   <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.text_field :status %>
+    <%= form.label :password_confirmation, "Подтверждение пароля", style: "display: block" %>
+    <%= form.password_field :password_confirmation %>
   </div>
-
+  <br>
   <div>
-    <%= form.label :admin, style: "display: block" %>
-    <%= form.check_box :admin %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit "Сохранить"%>
   </div>
 <% end %>
