@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'traditions',to: 'static_pages#traditions'
   # resources :static_pages, only: %i[home about news traditions]
 
-  resource :session, only: %i[new create]
+  resource :session, only: %i[new create destroy]
   resources :posts
   resources :users
   root 'static_pages#home'
