@@ -1,0 +1,11 @@
+<% if form_object.errors.any? %>
+<div style="color: red">
+    <h2><%= pluralize(form_object.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+    <ul>
+    <% form_object.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+    <% end %>
+    </ul>
+</div>
+<% end %>

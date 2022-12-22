@@ -1,2 +1,16 @@
-<h1>StaticPages#news</h1>
-<p>Find me in app/views/static_pages/news.html.erb</p>
+<div class="container">
+    <div id="posts" style= "float: left">
+        <h1>Последние новости:</h1>
+        <% Post.all.reverse.each do |post| %>
+        <p>------------------------------------------------------------------------</p>
+            <%= render post%>
+            <%= link_to "Читать далее...", post%>
+        <% end %> 
+    </div>
+    <div style= "float: right">
+        <% if current_user.present?%>
+        <%= link_to "Добавить новость", new_post_path%>
+        <%end%>
+    </div>
+</div>
+

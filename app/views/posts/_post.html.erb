@@ -9,14 +9,17 @@
     <%= post.summary %>
   </p>
 
-  <p>
-    <strong>Body:</strong>
-    <%= post.body %>
-  </p>
+  <% if current_page?(controller: 'posts', action: 'show', id: post.id)%>
+    <p>
+      <strong>Body:</strong>
+      <%= post.body %>
+    </p>
+  <% end%>
 
   <p>
     <strong>User:</strong>
-    <%= post.user_id %>
+    <% user = User.find_by(id: post.user_id) %>
+    <%= user.username %>
   </p>
 
 </div>

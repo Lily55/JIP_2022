@@ -2,9 +2,15 @@
 
 <%= render @post %>
 
-<div>
-  <%= link_to "Edit this post", edit_post_path(@post) %> |
-  <%= link_to "Back to posts", posts_path %>
 
-  <%= button_to "Destroy this post", @post, method: :delete %>
+<div>
+  <% if current_user.present? && current_user.admin == true || current_user.present? && current_user.id == @post.user_id%>
+  <%= link_to "Редактировать", edit_user_path(@post) %> |
+  <% end %>
+  <%= link_to "К другим новостям", news_path%>
+  <br>
+  <br>
+  <% if current_user.present? && current_user.admin == true || current_user.present? && current_user.id == @post.user_id%>
+  <%= button_to "Удалить", @post, method: :delete %>
+  <% end%>
 </div>
