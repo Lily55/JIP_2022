@@ -5,7 +5,9 @@
 
 <% if current_user.present?%>
 <p><%= "@#{current_user.username}"%></p>
+<p><%= link_to "Посмотреть профиль", current_user%></p>
 <p><%= button_to 'Выйти', session_path, method: :delete%></p>
 <% else%>
 <p><%= link_to "Вход", new_session_path%></p>
+<p><%= link_to "Регистрация", new_user_path%></p>
 <% end %>
