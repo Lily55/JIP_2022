@@ -1,13 +1,35 @@
-<h1>StaticPages#home</h1>
+
 <%unless flash[:success].blank?%>
   <h2 style = 'color:green'><%=flash[:success]%></h2>
 <%end%>
 
 <% if current_user.present?%>
-<p><%= "@#{current_user.username}"%></p>
-<p><%= link_to "Посмотреть профиль", current_user%></p>
 <p><%= button_to 'Выйти', session_path, method: :delete%></p>
-<% else%>
-<p><%= link_to "Вход", new_session_path%></p>
-<p><%= link_to "Регистрация", new_user_path%></p>
 <% end %>
+
+<div class='container'>
+  <div class="row"  style="background-color: #e49a12">
+    <div class="col-6">
+      <h3 >BEST (Board of European Students of Technology) - это международная организация, объединяющая более 3300 студентов из 31 стран.
+      Нашей главной целью является содействие коммуникации и обмену опытом между студентами технических университетов в Европе.
+      Через работу в многокультурной среде будущие инженеры открыты на международные контакты, приобретают уникальный опыт, что делает их более востребованными на рынке труда.</h3>
+    </div>
+    <div class="col-6">
+      <img src="https://news.harvard.edu/wp-content/uploads/2022/08/20220803_soc_mobility-2048x1366.jpg" style="width: 500px; padding: 20px">
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-6">
+      <img src="https://static.tildacdn.com/tild3631-6162-4136-b933-636637626561/photo.png">
+      <h2 style="color: #e49a12">Развитие студентов</h2>
+      <h3>Мы стараемся раскрыть потенциал каждого студента, развитием таких навыков, как командная работа, лидерство и тайм-менеджмент, чтобы повысить его способность работать в международной среде.</h3>
+    </div>
+    <div class="col-6">
+      <img src='https://static.tildacdn.com/tild3465-3036-4337-b134-333763653166/_1.png'>
+      <h2 style="color: #e49a12">Повышение культурного разнообразия</h2>
+      <h3>В каждом нашем мероприятии мы стараемся привлечь студентов с разным социальным и культурным происхождением. Мы ценим креативность, инновационные идеи и способность мыслить нестандартно.</h3>
+    </div>
+  </div>
+</div>

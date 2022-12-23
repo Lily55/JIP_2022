@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_21_224842) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_22_230348) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.string "summary"
@@ -29,7 +29,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_21_224842) do
     t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_reset_token"
+    t.datetime "password_reset_token_sent_at"
+    t.string "activation_digest"
+    t.boolean "activated", default: false
+    t.datetime "activated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["password_reset_token"], name: "index_users_on_password_reset_token"
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 

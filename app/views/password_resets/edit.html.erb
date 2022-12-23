@@ -1,0 +1,33 @@
+<%= form_with model: @user, url: password_reset_path, method: :patch do |f| %>
+    <% if @user.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% @user.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :password_reset_token, value: @user.password_reset_token %>
+  <%= f.hidden_field :email, value: @user.email %>
+
+  <div style="text-align: center">
+    <h1>Создайте новый пароль</h1>
+
+    <div>
+      <%= f.password_field :password, id: "Password", placeholder: "Новый пароль"%>
+    </div>
+ 
+
+
+    <div >
+      <%= f.password_field :password_confirmation, id: "Password_confirmation", placeholder: "Подтверждение пароля" %>
+    </div>
+  
+
+  <%= f.submit 'Создать новый пароль' %>
+  </div>
+<% end %> 

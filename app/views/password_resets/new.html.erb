@@ -1,0 +1,16 @@
+<div style="text-align: center">
+	<%=form_with url: password_reset_path do |f|%>
+
+	<h1>Восстановление пароля</h1>
+    <br>
+    <h2>Для восстановления пароля введите почту:</h2>
+	
+	<div>
+		<%=f.text_field :email, require: true, id: 'email', placeholder: "Введите почту"%><br/>
+	</div>
+	<div>
+		<%=f.submit :email, value: 'Отправить',require: true%>
+	</div>
+	<%= link_to 'Назад', :back %>
+<%end%>
+</div>

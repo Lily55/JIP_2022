@@ -18,19 +18,22 @@
   <%end%>
 
   <div>
-    <%= form.label :title, "Заголовок:",style: "display: block" %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, id: 'Title', placeholder: "Заголовок" %>
   </div>
 
   <div>
-    <%= form.label :summary, "Краткое содержание:", style: "display: block" %>
-    <%= form.text_field :summary %>
+    <%= form.text_field :summary, id: 'Summary', placeholder: "Краткое содержание"%>
   </div>
 
   <div>
-    <%= form.label :body, "Текст нововсти:",style: "display: block" %>
-    <%= form.text_area :body %>
+    <%= form.text_area :body, id: 'Body', placeholder: "Текст новости", style: "width: 1000px; padding: 12px 20px; margin: 8px 0; display: inline-block; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;"%>
   </div>
+
+  <select class="custom-select" name = "role" value= 'Для кого?'>
+    <option value = "full">Full</option>
+    <option value = "all">All</option>
+    <option value = "baby&full">Baby & Full</option>
+  </select>
 
   <%= form.hidden_field :user_id, value: current_user.id %>
 
@@ -38,3 +41,4 @@
     <%= form.submit %>
   </div>
 <% end %>
+

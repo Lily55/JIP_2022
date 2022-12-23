@@ -18,4 +18,8 @@ RSpec.describe User, type: :model do
   it "validates format" do
     expect(User.create(email: 'title').valid?).to eq false
   end
+
+  it "password should be minimum 6 characters" do
+    expect(User.create(password_digest: 'title').valid?).to eq false
+  end
 end
