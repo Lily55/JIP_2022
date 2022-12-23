@@ -15,9 +15,9 @@
   <% end%>
 
   <h5>Опубликовано: 
-    <% user = User.find_by(id: post.user_id) %>
-    <%= user.username %> | 
-    <%= Time.current %>
+    <% @user = User.find_by(id: post.user_id) %>
+    <%= @user.username %> | 
+    <%= Time.now %>
   </h5>
 
 </div>

@@ -10,7 +10,7 @@
 		<%end%>
 	
 		<div>
-			<%=f.text_field :username, require: true, id: 'Username', placeholder: "Логин" %><br/>
+			<%=f.text_field :username, value: params[:username], require: true, id: 'Username', placeholder: "Логин" %><br/>
 		</div>
 		<div>
 			<%=f.password_field :password, require: true, id: 'Password', placeholder: "Пароль"%><br/>

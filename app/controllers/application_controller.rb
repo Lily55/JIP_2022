@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
     include Pagy::Backend
     include Authorization
+    include Authentication
     helper_method :current_user
     
     private

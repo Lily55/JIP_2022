@@ -17,7 +17,7 @@
           </div>
       </div>
       <div class= "col-6">
-          <% if current_user.present?%>
+          <% if policy(@posts).create?%>
           <h1>
           <%= link_to "Добавить новость", new_post_path%>
           </h1>

@@ -3,7 +3,7 @@
 <p>Если это Вы, то перейдите по ссылке ниже для сброса пароля</p>
 
 <p><%= link_to 'Сбросить пароль',
-                edit_password_reset_url(user: {password_reset_token: @user.password_reset_token, email: @user.email}),
+                edit_password_reset_url(user: {password_reset_token: @user.password_reset_token_digest, email: @user.email}),
                 target: '_blank'%>
 
 <p>Если это не вы, проигнорируйте данное сообщение</p>

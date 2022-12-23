@@ -10,5 +10,9 @@
   <%= link_to "На главную", home_path%>
   <br>
   <br>
+  
   <%= button_to "Удалить", @user, method: :delete %>
+  <% if current_user.present?%>
+  <p><%= button_to 'Выйти', session_path, method: :delete%></p>
+  <% end %>
 </div>

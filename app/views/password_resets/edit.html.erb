@@ -1,3 +1,4 @@
+<%= flash[:warning]%>
 <%= form_with model: @user, url: password_reset_path, method: :patch do |f| %>
     <% if @user.errors.any? %>
     <div style="color: red">
@@ -11,7 +12,7 @@
     </div>
   <% end %>
 
-  <%= f.hidden_field :password_reset_token, value: @user.password_reset_token %>
+  <%= f.hidden_field :password_reset_token, value: @user.password_reset_token_digest %>
   <%= f.hidden_field :email, value: @user.email %>
 
   <div style="text-align: center">

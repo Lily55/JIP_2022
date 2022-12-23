@@ -26,6 +26,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        
         session[:user_id] = @user.id
         format.html { redirect_to user_url(@user), notice: "User was successfully created." }
         format.json { render :show, status: :created, location: @user }
@@ -52,6 +53,8 @@ class UsersController < ApplicationController
   # DELETE /users/1 or /users/1.json
   def destroy
     flash[:alert] = "Вы действительно хотите удалить профиль?"
+    posts = @user.posts.find_by(user_id: @user.id)
+    posts.each { |post| post.destroy}
 
     @user.destroy
 

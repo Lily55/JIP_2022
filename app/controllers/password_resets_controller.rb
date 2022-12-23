@@ -1,5 +1,7 @@
 class PasswordResetsController < ApplicationController
   before_action :set_user, only: %i[edit update]
+  before_action :require_no_authentication
+
   def new
   end
 
@@ -30,13 +32,13 @@ class PasswordResetsController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:password, :passwordconfirmation)
+    params.require(:user).permit(:password, :password_confirmation)
   end
 
   def set_user
     redirect_to( new_session_path) unless params[:user].present?
-    @user = User.find_by(email: params[:user][:email])
-                        # password_reset_token: params[:user][:password_reset_token])
+    @user = User.find_by(email: params[:user][:email],
+                        password_reset_token_digest: params[:user][:password_reset_token])
     flash[:warning] = "Пользователь не найден" if @user.nil?
     redirect_to( new_session_path) unless @user&.password_reset_period_valid?
   end

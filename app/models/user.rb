@@ -1,6 +1,8 @@
 require 'faker'
 
 class User < ApplicationRecord
+    enum role: { basic: 0, full: 2, admin: 1, baby: 3, observer: 4 }, _suffix: :role
+
     has_secure_password
     validates :password, length: {minimum: 6}
     validates_uniqueness_of :username, :email
@@ -10,16 +12,44 @@ class User < ApplicationRecord
 
     has_many :posts
 
-    attr_accessor :password_reset_token, :password_reset_token_sent_at
+    def author?(obj)
+        obj.user = self
+    end
+
+    def admin_role?
+        self.role == 1
+    end
+
+    def full_role?
+        self.role == 2
+    end
+
+    def baby_role?
+        self.role == 3
+    end
+
+    def observer_role?
+        self.role == 4
+    end
+
+    def remember_me
+        token = SecureRandom.urlsafe_base64
+        update_column :remember_token_digest, digest(token)
+    end
+
+    def remember_token_authenticated?(remember_token)
+        BCrypt::Password.new(remember_token_digest).is_password?(remember_token)
+    end
 
     def set_password_reset_token
-        update password_reset_token: "#{Faker::Lorem.characters(number: 10)}"
+        update_column :password_reset_token_digest, digest(SecureRandom.urlsafe_base64)
+        update_column :password_reset_token_sent_at_digest, Time.current
     end
 
     def password_reset_period_valid?
         
         # flash[:warning] = "password_reset_token_sent_at не существует" unless password_reset_token.present?
-        email.present?
+        password_reset_token_sent_at_digest.present? && Time.now - password_reset_token_sent_at_digest <= 60.minutes
     end
 
     def new_token

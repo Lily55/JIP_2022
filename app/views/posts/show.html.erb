@@ -8,13 +8,13 @@
 
 
       <div>
-        <% if current_user.present? && current_user.admin == true || current_user.present? && current_user.id == @post.user_id%>
+        <% if policy(@post).update?%>
         <%= link_to "Редактировать", edit_post_path(@post) %> |
         <% end %>
         <%= link_to "К другим новостям", news_path%>
         <br>
         <br>
-        <% if current_user.present? && current_user.admin == true || current_user.present? && current_user.id == @post.user_id%>
+        <% if policy(@post).destroy?%>
         <%= button_to "Удалить", @post, method: :delete %>
         <% end%>
       </div>
