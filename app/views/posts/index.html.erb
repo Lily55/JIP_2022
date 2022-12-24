@@ -1,6 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
 
+
 <div class="container">
   <div class='row'>
       <div class= "col-6">
@@ -17,10 +18,12 @@
           </div>
       </div>
       <div class= "col-6">
-          <% if policy(@posts).create?%>
+          <% if current_user.present? %>
+          <% if current_user.admin? || current_user.moder?%>
           <h1>
-          <%= link_to "Добавить новость", new_post_path%>
+            <%= link_to "Добавить новость", new_post_path%>
           </h1>
+            <%end%>
           <%end%>
       </div>
   </div>

@@ -14,10 +14,8 @@
     </p>
   <% end%>
 
-  <h5>Опубликовано: 
-    <% @user = User.find_by(id: post.user_id) %>
-    <%= @user.username %> | 
-    <%= Time.now %>
+  <h5>Опубликовано:  
+    <%= post.created_at %>
   </h5>
 
 </div>

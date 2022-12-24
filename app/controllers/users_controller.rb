@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :check_admin, only: %i[index]
+  before_action :check_owner, only: %i[edit update destroy]
 
   # GET /users or /users.json
   def index
@@ -26,7 +28,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        
+
         session[:user_id] = @user.id
         format.html { redirect_to user_url(@user), notice: "User was successfully created." }
         format.json { render :show, status: :created, location: @user }
@@ -52,14 +54,14 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
-    flash[:alert] = "Вы действительно хотите удалить профиль?"
-    posts = @user.posts.find_by(user_id: @user.id)
-    posts.each { |post| post.destroy}
+    # flash[:alert] = "Вы действительно хотите удалить профиль?"
+    # posts = @user.posts.find_by(user_id: @user.id).all
+    # posts.each { |post| post.destroy}
 
     @user.destroy
 
     respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
+      format.html { redirect_to home_path, notice: "User was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -72,6 +74,14 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:username, :email, :password, :status, :admin, :password_confirmation)
+      params.require(:user).permit(:username, :email, :password, :status, :admin, :password_confirmation, :role)
+    end
+
+    def check_admin
+      redirect_to root_path unless current_user.admin?
+    end
+
+    def check_owner
+      redirect_to root_path unless current_user.id == @user.id || current_user.admin?
     end
 end

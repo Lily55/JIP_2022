@@ -1,7 +1,7 @@
 require 'faker'
 
 class User < ApplicationRecord
-    enum role: { basic: 0, full: 2, admin: 1, baby: 3, observer: 4 }, _suffix: :role
+    enum role: {basic: 0, full: 2, admin: 1, baby: 3, observer: 4}
 
     has_secure_password
     validates :password, length: {minimum: 6}
@@ -10,35 +10,27 @@ class User < ApplicationRecord
     validates :username, format: { with: /\A\w+\s?\w+\z/, message: 'Имя пользователя не должно иметь пробелов на конце, а также других знаков по типу: "+", "-" и тд.'}
     validates :email, format: { with: /\A([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})\z/, message: 'Почта должна содержать @ и домен'}
 
-    has_many :posts
+    has_many :posts, dependent: :destroy
 
-    def author?(obj)
-        obj.user = self
+
+    def admin?
+        role == 'admin'
     end
 
-    def admin_role?
-        self.role == 1
+    def full?
+        role == 'full'
     end
 
-    def full_role?
-        self.role == 2
+    def baby?
+        role == 'baby'
     end
 
-    def baby_role?
-        self.role == 3
+    def observer?
+        role == 'observer'
     end
 
-    def observer_role?
-        self.role == 4
-    end
-
-    def remember_me
-        token = SecureRandom.urlsafe_base64
-        update_column :remember_token_digest, digest(token)
-    end
-
-    def remember_token_authenticated?(remember_token)
-        BCrypt::Password.new(remember_token_digest).is_password?(remember_token)
+    def moder?
+        role == 'observer' || role == 'baby' || role == 'full'
     end
 
     def set_password_reset_token
@@ -61,5 +53,6 @@ class User < ApplicationRecord
                                                       BCrypt::Engine.cost
         BCrypt::Password.create(string, cost: cost)
     end
+
 
 end

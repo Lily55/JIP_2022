@@ -1,8 +1,15 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
-  before_action :require_authentication
-  before_action :authorize_post!
-  after_action :verify_authorized
+  before_action :require_authentication, only: %i[index]
+  before_action :check_moder, only: %i[create new]
+  before_action :check_owner, only: %i[edit update destroy]
+
+
+  helper_method :owner
+
+  def owner
+    current_user.id == @post.user_id
+  end
 
   # GET /posts or /posts.json
   def index
@@ -68,10 +75,17 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :summary, :body, :user_id)
+      params.require(:post).permit(:title, :summary, :body, :user_id, :forwhom)
+    end
+    
+
+    def check_moder
+      redirect_to posts_path unless current_user.moder? || current_user.admin?
     end
 
-    def authorize_post!
-      authorize(@post || Post)
+    def check_owner
+      redirect_to posts_path unless current_user.admin? || current_user.id == @post.user_id
     end
+
+
 end

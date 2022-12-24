@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
     user = User.find_by(username: user_params[:username])&.authenticate(user_params[:password])
 
     if user.present?
+      
       session[:user_id] = user.id
       flash[:success] = 'Вы вошли на сайт'
       redirect_to root_path
