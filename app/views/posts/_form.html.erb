@@ -30,7 +30,13 @@
   </div>
 
   <div>
-    <%= form.select(:forwhom, ['all','full', 'baby&full']) %>
+    <% if current_user.admin? || current_user.full?%>
+    <%= form.select(:forwhom, ['all','baby&full','full' ]) %>
+    <% elsif current_user.baby?%>
+    <%= form.select(:forwhom, ['all','baby&full']) %>
+    <% else %>
+    <%= form.select(:forwhom, ['all']) %>
+    <%end%>
   </div>
 
   <%= form.hidden_field :user_id, value: current_user.id %>

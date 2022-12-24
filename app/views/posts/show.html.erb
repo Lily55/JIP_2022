@@ -9,15 +9,15 @@
 
       <div>
       <% if current_user.present? %>
-          <%# <% if current_user.admin? || owner%> %>
+          <% if current_user.admin? || owner%>
           <%= link_to "Редактировать", edit_post_path(@post) %> |
-          <%# <% end %> %>
+          <% end %>
           <%= link_to "К другим новостям", posts_path%>
           <br>
           <br>
-          <%# <% if current_user.admin? || owner%> %>
+          <% if current_user.admin? || owner%>
           <%= button_to "Удалить", @post, method: :delete %>
-          <%# <% end%> %>
+          <% end%>
         <%end%>
       </div>
 
