@@ -11,7 +11,9 @@
     <%= stylesheet_link_tag 'new_user', media: 'all' %>
     <%= stylesheet_link_tag 'skola.min.0b81ff', media: 'all' %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag 'karusel', media: 'all' %>
     <%= javascript_importmap_tags %>
+    <%= javascript_include_tag('slider') %>
   </head>
 
   <body>
@@ -71,9 +73,7 @@
                 <% if current_user.present?%>
                     <%= "@#{current_user.username}"%>
                     <%= link_to "Посмотреть профиль", current_user%>
-                    <button type="button" class="btn btn-link" onclick="">Link</button>
                     
-                    <%= button_to 'Выйти', session_path, method: :delete%>
                 <% else%>
                     <%= link_to "Вход", new_session_path%>
                     <%= link_to "Регистрация", new_user_path%>

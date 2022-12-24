@@ -1,0 +1,75 @@
+.slider-line img{
+    display: block;
+    width: 1815px;
+    
+}
+
+* {
+    margin: 15px;
+    padding: 0;
+}
+
+.container1 {
+    padding-top: 0, 0;
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 15px;
+
+}
+
+.button-next, .button-prev, .slider-wrapper, .dot{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.slider-line{
+    display: flex;
+    position: relative;
+    left: 0;
+}
+
+.slider-wrapper{
+    overflow: hidden;
+    width: 1815px;
+    
+    box-shadow: 1px 1px 10px 2px #c25004;
+    margin-left: 0;
+    
+}
+
+.button-next, .button-prev{
+    
+    background: #a74606;
+    color: #fff;
+    border: 1px solid #423a34;
+    border-radius: 5%;
+    box-shadow: 1px 1px 5px 1px #d15808;
+    margin: 7px;
+    
+}
+
+.button-next:hover, .button-prev:hover, .dot:hover {
+    background: #df6d22;
+}
+
+.button-next:active, .button-prev:active, .dot:active {
+    background:  #d15808;
+}
+
+.dot {
+    width: 20px;
+    height: 20px;
+    background: #a74606;
+    border-radius: 50%;
+    margin-top: 10px;
+    margin: 3px;
+}
+
+.active{
+    background:  #d15808;
+}
+
+.transformAnimation{
+    transition: .4s all ease-in-out;
+}
