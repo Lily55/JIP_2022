@@ -1,15 +1,13 @@
 Rails.application.routes.draw do
 
-  # get 'password_resets/new'
-  # get 'password_resets/create'
-  # get 'password_resets/edit'
-  # get 'password_resets/update'
 
   get 'home', to: 'static_pages#home'
   get 'about', to: 'static_pages#about'
   get 'news', to: 'static_pages#news'
   get 'traditions',to: 'static_pages#traditions'
-  # resources :static_pages, only: %i[home about news traditions]
+
+  get 'posts', to: 'posts#index'
+  post 'posts', to: 'posts#index'
 
   resource :session, only: %i[new create destroy]
   resources :posts

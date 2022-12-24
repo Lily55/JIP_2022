@@ -1,23 +1,29 @@
 <p style="color: green"><%= notice %></p>
 
 
+<%=pluralize(@posts.count, "Result")%>
 
 <div class="container">
   <div class='row'>
       <div class= "col-6">
           <div id="posts">
               <h1>Последние новости:</h1>
-                  <ul class="list-group list-group-flush">
-                  <% @posts.reverse.each do |post| %>
-                      <li class="list-group-item">
-                      <%= render post %>
-                      <%= link_to "Читать далее...", post%>
-                      </li>
-                  <% end %>
-                  </ul>
+              <%= turbo_frame_tag 'frame1' do%>
+                <%=render 'search' %>
+              <%end%>
           </div>
       </div>
+      
       <div class= "col-6">
+
+
+          <h2 style="color: #c78406">Поиск:
+        <%= search_form_for @q do |f| %>
+          <%= f.search_field :title_start, placeholder: 'Найти...' %>
+          <%= f.submit %>
+        <%end%>
+        </h2>
+
           <% if current_user.present? %>
           <% if current_user.admin? || current_user.moder?%>
           <h1>

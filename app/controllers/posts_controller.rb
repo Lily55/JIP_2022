@@ -13,13 +13,18 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index
+    
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true)
+
     if current_user.full? || current_user.admin?
-      @posts = Post.all
+      @posts = @q.result(distinct: true)
     elsif current_user.baby?
-      @posts = Post.all.select{ |post| post.forwhom == 'baby&full' || post.forwhom == 'all'}
+      @posts = @q.result(distinct: true).select{ |post| post.forwhom == 'baby&full' || post.forwhom == 'all'}
     else
-      @posts = Post.all.select { |post| post.forwhom == 'all' }
+      @posts = @q.result(distinct: true).select { |post| post.forwhom == 'all' }
     end
+  
   end
 
   # GET /posts/1 or /posts/1.json

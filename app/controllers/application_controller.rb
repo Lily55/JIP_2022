@@ -4,6 +4,12 @@ class ApplicationController < ActionController::Base
     include Authentication
     helper_method :current_user
     
+    before_action :set_query
+
+    def set_query
+        @query = Post.ransack(params[:search])
+    end
+
     private
 
     def current_user

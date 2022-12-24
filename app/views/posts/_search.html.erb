@@ -1,0 +1,10 @@
+    <%=turbo_frame_tag 'frame1' do%>
+        <ul class="list-group list-group-flush">
+        <% @posts.reverse.each do |post| %>
+            <li class="list-group-item">
+            <%= render post %>
+            <%= link_to "Читать далее...", post%>
+            </li>
+        <% end %>
+        </ul>
+    <%end%>
