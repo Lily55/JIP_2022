@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
-  before_action :require_authentication, only: %i[index]
+  # before_action :require_authentication, only: %i[index]
   before_action :check_moder, only: %i[create new]
   before_action :check_owner, only: %i[edit update destroy]
 
@@ -17,14 +17,17 @@ class PostsController < ApplicationController
     @q = Post.ransack(params[:q])
     @posts = @q.result(distinct: true)
 
-    if current_user.full? || current_user.admin?
-      @posts = @q.result(distinct: true)
-    elsif current_user.baby?
-      @posts = @q.result(distinct: true).select{ |post| post.forwhom == 'baby&full' || post.forwhom == 'all'}
+    if current_user.present?
+      if current_user.full? || current_user.admin?
+        @posts = @q.result(distinct: true)
+      elsif current_user.baby?
+        @posts = @q.result(distinct: true).select{ |post| post.forwhom == 'baby&full' || post.forwhom == 'all'}
+      else
+        @posts = @q.result(distinct: true).select { |post| post.forwhom == 'all' }
+      end
     else
       @posts = @q.result(distinct: true).select { |post| post.forwhom == 'all' }
     end
-  
   end
 
   # GET /posts/1 or /posts/1.json

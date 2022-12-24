@@ -31,11 +31,13 @@
     <%= form.password_field :password_confirmation %>
   </div>
 
+  <% if current_user.present?%>
   <% if current_user.admin?%>
   <div>
     <%= form.label :role, "Статус", style: "display: block" %>
     <%= form.text_field :role %>
   </div>
+  <%end%>
   <%end%>
 
   <br>
