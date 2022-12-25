@@ -1,6 +1,6 @@
 .slider-line img{
     display: block;
-    width: 1815px;
+    width: 1600px;
     
 }
 
@@ -31,7 +31,7 @@
 
 .slider-wrapper{
     overflow: hidden;
-    width: 1815px;
+    width: 1500px;
     
     box-shadow: 1px 1px 10px 2px #c25004;
     margin-left: 0;
@@ -39,7 +39,8 @@
 }
 
 .button-next, .button-prev{
-    
+    width: 100px;
+    height: 50px;
     background: #a74606;
     color: #fff;
     border: 1px solid #423a34;

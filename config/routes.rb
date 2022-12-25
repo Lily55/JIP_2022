@@ -7,9 +7,6 @@ Rails.application.routes.draw do
   get 'news', to: 'static_pages#news'
   get 'traditions',to: 'static_pages#traditions'
 
-  get 'posts', to: 'posts#index'
-  post 'posts', to: 'posts#index'
-
   resource :session, only: %i[new create destroy]
   resources :posts
   resources :users
