@@ -6,5 +6,26 @@ ru:
         title: "Заголовок"
         summary: "Краткое описание"
         body: "Текст новости"
+      user:
+        username: "Логин"
+        password: "Пароль"
+        password_confirm: "Подтверждение пароля"
+        role: "Статус"
+
   static_pages:
     home: "Главная"
+    about: "О нас"
+    traditions: "Традиции"
+    news: "Нововсти"
+    profile: "Посмотреть профиль"
+    login: "Войти"
+    registr: "Регистрация"
+
+  news:
+    latest_news: "Последние новости:"
+    search: "Поиск:"
+    find: "Найти..."
+    button: "Искать"
+    read: "Читать далее..."
+    add: "Добавить новость"
+    published: "Опубликовано:"

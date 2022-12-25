@@ -6,5 +6,26 @@ en:
         title: "Title"
         summary: "Summary"
         body: "Body"
+      user:
+        username: "Username"
+        password: "Password"
+        password_confirm: "Password confirmation"
+        role: "Status"
+
   static_pages:
     home: "Home"
+    about: "About us"
+    traditions: "Traditions"
+    news: "News"
+    profile: "Look profile"
+    login: "Log in"
+    registr: "Registration"
+  
+  news:
+    latest_news: "The Latest News:"
+    search: "Look for:"
+    find: "Search..."
+    button: "Find"
+    read: "Read more..."
+    add: "Add news"
+    published: "Published:"

@@ -53,33 +53,33 @@
     
         <li class="item item-current">
             <a href="/best/about">
-                <%= link_to "О нас", about_path%>
+                <%= link_to "#{t('static_pages.about')}", about_path%>
             </a>
         </li>
     
         <li class="item item-current">
             <a>
-                <%= link_to "Традиции", traditions_path%>
+                <%= link_to "#{t('static_pages.traditions')}", traditions_path%>
             </a>
         </li>
     
         <li class="item item-current">
             <a>
-                <%= link_to "Новости", posts_path%>
+                <%= link_to "#{t('static_pages.news')}", posts_path%>
             </a>
         </li>
         <li class="item item_current">
             <a>
                 <% if current_user.present?%>
                     <%= "@#{current_user.username}"%>
-                    <%= link_to "Посмотреть профиль", current_user%>
+                    <%= link_to "#{t('static_pages.profile')}", current_user%>
                     <%= t I18n.locale %>:
                     <% I18n.available_locales.each do |locale| %>
                         <%= link_to t(locale), url_for(locale: locale)%>
                     <% end %>                  
                 <% else%>
-                    <%= link_to "Вход", new_session_path%>
-                    <%= link_to "Регистрация", new_user_path%>
+                    <%= link_to "#{t('static_pages.login')}", new_session_path%>
+                    <%= link_to "#{t('static_pages.registr')}", new_user_path%>
                     <%= t I18n.locale %>:
                     <% I18n.available_locales.each do |locale| %>
                         <%= link_to t(locale), url_for(locale: locale)%>

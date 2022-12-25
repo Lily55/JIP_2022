@@ -14,7 +14,7 @@
     </p>
   <% end%>
 
-  <h5>Опубликовано: 
+  <h5><%= "#{t('news.published')}"%> 
     <% user = User.find_by(id: post.user_id)%>
     <%= "@#{user.username}"%> |
     <%= post.created_at %>

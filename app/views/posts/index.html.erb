@@ -7,7 +7,7 @@
   <div class='row'>
       <div class= "col-6">
           <div id="posts">
-              <h1>Последние новости:</h1>
+              <h1><%= "#{t('news.latest_news')}"%></h1>
               <%= turbo_frame_tag 'frame1' do%>
                 <%=render 'search' %>
               <%end%>
@@ -17,17 +17,17 @@
       <div class= "col-6">
 
 
-          <h2 style="color: #c78406">Поиск:
+          <h2 style="color: #c78406"><%= "#{t('news.search')}"%>
         <%= search_form_for @q do |f| %>
-          <%= f.search_field :title_cont_any, placeholder: 'Найти...' %>
-          <%= f.submit %>
+          <%= f.search_field :title_cont_any, placeholder: "#{t('news.find')}" %>
+          <%= f.submit "#{t('news.button')}"%>
         <%end%>
         </h2>
 
           <% if current_user.present? %>
           <% if current_user.admin? || current_user.moder?%>
           <h1>
-            <%= link_to "Добавить новость", new_post_path%>
+            <%= link_to "#{t('news.add')}", new_post_path%>
           </h1>
             <%end%>
           <%end%>

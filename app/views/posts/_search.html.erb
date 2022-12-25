@@ -3,7 +3,7 @@
         <% @posts.reverse.each do |post| %>
             <li class="list-group-item">
             <%= render post %>
-            <%= link_to "Читать далее...", post%>
+            <%= link_to "#{t('news.read')}", post%>
             </li>
         <% end %>
         </ul>
