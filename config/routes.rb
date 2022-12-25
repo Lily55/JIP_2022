@@ -1,21 +1,21 @@
 Rails.application.routes.draw do
 
 
+  # scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
+    get 'home', to: 'static_pages#home'
+    get 'about', to: 'static_pages#about'
+    get 'news', to: 'static_pages#news'
+    get 'traditions',to: 'static_pages#traditions'
 
-  get 'home', to: 'static_pages#home'
-  get 'about', to: 'static_pages#about'
-  get 'news', to: 'static_pages#news'
-  get 'traditions',to: 'static_pages#traditions'
+    resource :session, only: %i[new create destroy]
+    resources :posts
+    resources :users
+    root 'static_pages#home'
 
-  resource :session, only: %i[new create destroy]
-  resources :posts
-  resources :users
-  root 'static_pages#home'
+    resources :account_activations, only: [:edit]
+    resource :password_reset, only: %i[new create edit update]
 
-  resources :account_activations, only: [:edit]
-  resource :password_reset, only: %i[new create edit update]
-
-
+  # end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

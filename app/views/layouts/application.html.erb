@@ -47,7 +47,7 @@
         
         <li class="item item-current">
             <a>
-                <%= link_to "Главная", home_path %>
+                <%= link_to "#{t('static_pages.home')}", home_path %>
             </a>
         </li>
     
@@ -73,10 +73,17 @@
                 <% if current_user.present?%>
                     <%= "@#{current_user.username}"%>
                     <%= link_to "Посмотреть профиль", current_user%>
-                    
+                    <%= t I18n.locale %>:
+                    <% I18n.available_locales.each do |locale| %>
+                        <%= link_to t(locale), url_for(locale: locale)%>
+                    <% end %>                  
                 <% else%>
                     <%= link_to "Вход", new_session_path%>
                     <%= link_to "Регистрация", new_user_path%>
+                    <%= t I18n.locale %>:
+                    <% I18n.available_locales.each do |locale| %>
+                        <%= link_to t(locale), url_for(locale: locale)%>
+                    <% end %>   
                 <% end %>
             </a>
         </li>

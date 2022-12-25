@@ -1,0 +1,10 @@
+ru:
+  hello: "Hello world"
+  activerecord:
+    attributes:
+      post:
+        title: "Заголовок"
+        summary: "Краткое описание"
+        body: "Текст новости"
+  static_pages:
+    home: "Главная"

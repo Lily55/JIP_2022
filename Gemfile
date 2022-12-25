@@ -48,6 +48,7 @@ gem 'faker'
 gem 'bootstrap', '~> 5.1.3'
 gem 'jquery-rails'
 gem 'ransack'
+gem 'rails-i18n', '~> 7.0.6'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
