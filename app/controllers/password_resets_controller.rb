@@ -13,7 +13,7 @@ class PasswordResetsController < ApplicationController
       PasswordResetMailer.with(user: @user).reset_email.deliver_later
     end
 
-    flash[:success] = "Письмо было отправлено!"
+    flash[:success] = "#{t('reset.letter')}"
     redirect_to new_session_path
   end
 
@@ -22,7 +22,7 @@ class PasswordResetsController < ApplicationController
 
   def update
     if @user.update(user_params)
-      flash[:success] = 'Пароль был изменён'
+      flash[:success] = "#{t('reset.change')}"
       redirect_to new_session_path
     else
       render :edit

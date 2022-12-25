@@ -1,5 +1,5 @@
 
-<div style="text-align: center"><h1 style="text-align: center">Вход</h1>
+<div style="text-align: center"><h1 style="text-align: center"><%= "#{t('form.enter')}"%></h1>
 <%unless flash[:notice].blank?%>
   <h2 style = 'color:red'><%=flash[:notice]%></h2>
 <%end%>
@@ -10,20 +10,20 @@
 		<%end%>
 	
 		<div>
-			<%=f.text_field :username, value: params[:username], require: true, id: 'Username', placeholder: "Логин" %><br/>
+			<%=f.text_field :username, value: params[:username], require: true, id: "Username", placeholder: "#{t('form.login')}" %><br/>
 		</div>
 		<div>
-			<%=f.password_field :password, require: true, id: 'Password', placeholder: "Пароль"%><br/>
+			<%=f.password_field :password, require: true, id: 'Password', placeholder: "#{t('form.password')}"%><br/>
 		</div>
         <br>
 		<div>
-			<%=f.submit :password, value: 'Войти',require: true%>
+			<%=f.submit :password, value: "#{t('form.enter')}",require: true%>
 		</div>
 	
 <%end%>
 <ul class="log">
-    <li><a><%= link_to 'Регистрация', new_user_path%></a></li>
-	<li><a><%= link_to 'Назад', home_path%></a></li>
-	<li><a><%= link_to 'Забыли пароль?', new_password_reset_path%></a></li>
+    <li><a><%= link_to "#{t('static_pages.registr')}", new_user_path%></a></li>
+	<li><a><%= link_to "#{t('form.back')}", home_path%></a></li>
+	<li><a><%= link_to "#{t('form.forgot')}", new_password_reset_path%></a></li>
 </ul>
 </div>

@@ -1,16 +1,16 @@
 <div id="<%= dom_id user %>">
   <p>
-    <strong>Логин:</strong>
+    <strong><%="#{t('activerecord.attributes.user.username')}:"%></strong>
     <%= user.username %>
   </p>
 
   <p>
-    <strong>Почта:</strong>
+    <strong><%="#{t('activerecord.attributes.user.email')}:"%></strong>
     <%= user.email %>
   </p>
 
   <p>
-    <strong>Статус:</strong>
+    <strong><%="#{t('activerecord.attributes.user.role')}:"%></strong>
     <%= user.role %>
   </p>
 

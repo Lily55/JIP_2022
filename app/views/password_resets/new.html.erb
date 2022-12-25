@@ -1,16 +1,16 @@
 <div style="text-align: center">
 	<%=form_with url: password_reset_path do |f|%>
 
-	<h1>Восстановление пароля</h1>
+	<h1><%= "#{t('reset.reseting')}"%></h1>
     <br>
-    <h2>Для восстановления пароля введите почту:</h2>
+    <h2><%= "#{t('reset.email')}"%></h2>
 	
 	<div>
-		<%=f.text_field :email, require: true, id: 'email', placeholder: "Введите почту"%><br/>
+		<%=f.text_field :email, require: true, id: 'email', placeholder: "#{t('reset.enter')}"%><br/>
 	</div>
 	<div>
-		<%=f.submit :email, value: 'Отправить',require: true%>
+		<%=f.submit :email, value: "#{t('reset.send')}",require: true%>
 	</div>
-	<%= link_to 'Назад', :back %>
+	<%= link_to "#{t('form.back')}", :back %>
 <%end%>
 </div>

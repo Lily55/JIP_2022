@@ -6,7 +6,7 @@
   <% if @post %>
     <% if post.errors.any? %>
     <div style="color: red">
-        <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+        <h2><%= pluralize(post.errors.count, "#{t('form.error')}") %> <%= "#{t('form.uncorrect_post')}"%></h2>
 
         <ul>
         <% post.errors.each do |error| %>
@@ -18,18 +18,19 @@
   <%end%>
 
   <div>
-    <%= form.text_field :title, id: 'Title', placeholder: "Заголовок" %>
+    <%= form.text_field :title, id: 'Title', placeholder: "#{t('activerecord.attributes.post.title')}" %>
   </div>
 
   <div>
-    <%= form.text_field :summary, id: 'Summary', placeholder: "Краткое содержание"%>
+    <%= form.text_field :summary, id: 'Summary', placeholder: "#{t('activerecord.attributes.post.summary')}"%>
   </div>
 
   <div>
-    <%= form.text_area :body, id: 'Body', placeholder: "Текст новости", style: "width: 1000px; padding: 12px 20px; margin: 8px 0; display: inline-block; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;"%>
+    <%= form.text_area :body, id: 'Body', placeholder: "#{t('activerecord.attributes.post.body')}", style: "width: 1000px; padding: 12px 20px; margin: 8px 0; display: inline-block; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;"%>
   </div>
 
   <div>
+    <%= "#{t('new_post.forwhom')}"%> 
     <% if current_user.admin? || current_user.full?%>
     <%= form.select(:forwhom, ['all','baby&full','full' ]) %>
     <% elsif current_user.baby?%>
@@ -42,7 +43,7 @@
   <%= form.hidden_field :user_id, value: current_user.id %>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "#{t('new_post.button')}"%>
   </div>
 <% end %>
 

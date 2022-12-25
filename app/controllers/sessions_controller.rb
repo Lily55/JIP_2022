@@ -10,10 +10,10 @@ class SessionsController < ApplicationController
     if user.present?
       
       session[:user_id] = user.id
-      flash[:success] = 'Вы вошли на сайт'
+      flash[:success] = "#{t('form.logged_in')}"
       redirect_to root_path
     else
-      flash.now[:notice] = 'Неправильный логин или пароль'
+      flash.now[:notice] = "#{t('form.uncorrect')}"
       render :new
     end
   end

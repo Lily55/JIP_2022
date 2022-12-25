@@ -1,11 +1,11 @@
 <div style="text-align: left; margin-left: 50px">
-<h1>Новый пост</h1>
+<h1><%= "#{t('new_post.new')}"%></h1>
 
 <%= render "form", post: @post %>
 
 <br>
 
 <div>
-  <%= link_to "Назад к новостям", posts_path %>
+  <%= link_to "#{t('show.to_news')}", posts_path %>
 </div>
 </div>

@@ -11,6 +11,7 @@ en:
         password: "Password"
         password_confirm: "Password confirmation"
         role: "Status"
+        email: "Email"
 
   static_pages:
     home: "Home"
@@ -20,6 +21,7 @@ en:
     profile: "Look profile"
     login: "Log in"
     registr: "Registration"
+    best: "BEST in BMSTU"
   
   news:
     latest_news: "The Latest News:"
@@ -29,3 +31,50 @@ en:
     read: "Read more..."
     add: "Add news"
     published: "Published:"
+
+  form:
+    login: "Username"
+    password: "Password"
+    password_confirm: "Password confirmation"
+    enter: "Log in"
+    back: "Back"
+    forgot: "Forgot password?"
+    uncorrect: "Uncorrect password or username"
+    logged_in: "You logged in!"
+    uncorrect_post: "prohibited this post from being saved:"
+    error: "error"
+    uncorrect_user: "prohibited this user from being saved:"
+
+  show:
+    edit: "Edit"
+    to_news: "Back to other news"
+    delete: "Delete"
+    log_out: "Log out"
+    edit: "Edit"
+    to_list: "To Users List"
+    homepage: "To homepage"
+    look: "Watch the post"
+
+  new_post:
+    new: "New post"
+    forwhom: "For whom?"
+    button: "Save"
+    edit: "Edit post"
+
+  new_user:
+    new: "New User"
+
+  users:
+    list: "Users"
+    edit: "Edit user"
+
+  reset:
+    email: "Enter your email to reset password:"
+    reseting: "Reset password"
+    send: "Send"
+    enter: "Enter email"
+    new_pass: "Create new password"
+    new: "New password"
+    letter: "The letter was sent!"
+    change: "The password wos changed"
+

@@ -1,11 +1,11 @@
 <div style="margin-left: 50px">
-  <h1>Новый пользователь</h1>
+  <h1><%="#{t('new_user.new')}:"%></h1>
 
   <%= render "form", user: @user %>
 
   <br>
 
   <div>
-    <%= link_to "Назад", :back%>
+    <%= link_to "#{t('form.back')}:", :back%>
   </div>
 </div>

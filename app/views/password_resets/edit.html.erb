@@ -2,7 +2,7 @@
 <%= form_with model: @user, url: password_reset_path, method: :patch do |f| %>
     <% if @user.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2><%= pluralize(@user.errors.count, "#{t('form.error')}") %>  <%= "#{t('form.uncorrect_user')}"%></h2>
 
       <ul>
         <% @user.errors.each do |error| %>
@@ -16,19 +16,19 @@
   <%= f.hidden_field :email, value: @user.email %>
 
   <div style="text-align: center">
-    <h1>Создайте новый пароль</h1>
+    <h1><%= "#{t('reset.new_pass')}"%></h1>
 
     <div>
-      <%= f.password_field :password, id: "Password", placeholder: "Новый пароль"%>
+      <%= f.password_field :password, id: "Password", placeholder: "#{t('reset.new')}"%>
     </div>
  
 
 
     <div >
-      <%= f.password_field :password_confirmation, id: "Password_confirmation", placeholder: "Подтверждение пароля" %>
+      <%= f.password_field :password_confirmation, id: "Password_confirmation", placeholder: "#{t('activerecord.attributes.user.password_confirm')}:" %>
     </div>
   
 
-  <%= f.submit 'Создать новый пароль' %>
+  <%= f.submit "#{t('reset.new_pass')}" %>
   </div>
 <% end %> 

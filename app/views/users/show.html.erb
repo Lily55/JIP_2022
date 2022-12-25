@@ -3,16 +3,16 @@
 <div style="margin-left: 50px"><%= render @user %></div>
 
 <div style="margin-left: 50px">
-  <%= link_to "Редактировать", edit_user_path(@user) %>
+  <%= link_to "#{t('show.edit')}", edit_user_path(@user) %>
   <% if current_user.present? && current_user.admin?%> |
-  <%= link_to "К списку пользователей", users_path %>
+  <%= link_to "#{t('show.to_list')}", users_path %>
   <% end%> |
-  <%= link_to "На главную", home_path%>
+  <%= link_to "#{t('show.homepage')}", home_path%>
   <br>
   <br>
   
-  <%= button_to "Удалить", @user, method: :delete %>
+  <%= button_to "#{t('show.delete')}", @user, method: :delete %>
   <% if current_user.present?%>
-  <p><%= button_to 'Выйти', session_path, method: :delete%></p>
+  <p><%= button_to "#{t('show.log_out')}", session_path, method: :delete%></p>
   <% end %>
 </div>
