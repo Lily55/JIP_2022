@@ -78,3 +78,15 @@ en:
     letter: "The letter was sent!"
     change: "The password wos changed"
 
+  update:
+    user: "User was successfully updated!"
+    post: "Post was successfully updated!"
+
+  create:
+    user: "User was successfully created."
+    post: "Post was successfully created."
+
+  destroy:
+    user: "User was successfully destroyed."
+    post: "Post was successfully destroyed."
+

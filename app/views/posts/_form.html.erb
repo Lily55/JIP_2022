@@ -30,7 +30,7 @@
   </div>
 
   <div>
-    <%= "#{t('new_post.forwhom')}"%> 
+    <%= form.label :forwhom, "#{t('new_post.forwhom')}"%> 
     <% if current_user.admin? || current_user.full?%>
     <%= form.select(:forwhom, ['all','baby&full','full' ]) %>
     <% elsif current_user.baby?%>
