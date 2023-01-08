@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <title>LR4</title>
+    <script src="scripts.js"></script>
+    <link href="http://e-learning.bmstu.ru/iu6/pluginfile.php/7546/mod_folder/content/0/bootstrap.min.css" rel="stylesheet">
+    <style>
+      body{
+        background-color: rgb(83, 238, 173);
+      }
+      table#maintable{
+        background-color: white;
+        border-collapse: collapse;
+      }
+      table#second_table{
+        margin-top: 50px;
+        background-color: white;
+        border-collapse: collapse;
+      }
+      th, tr, td{
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row" style="margin-top: 50px;">
+        <div class="col-6">
+          <table id="maintable">
+            <tr>
+              <th>
+                Номер продукта
+              </th>
+              <th>
+                Название продукта
+              </th>
+              <th>
+                Стоимость продукта
+              </th>
+            </tr>
+          </table>
+        </div>
+        <div class="col-6">
+          <table style="border: 0px">
+            <tr style="border: 0px">
+            <td style="border: 0px">Название продукта: </td>
+            <td style="border: 0px"><form><input id="name" type="text" name="fname" /><br /></form></td>
+            </tr>
+            <tr style="border: 0px">
+              <td style="border: 0px">Стоимость продукта: </td>
+              <td style="border: 0px"><form><input id="cost" type="text" name="lname" /><br /></form></td>
+            </tr>
+          </table>
+          <form><input type="button" value="Отправить" onclick="getData()"></form>
+        </div>
+      </div>
+    </div>
+    <div class="=container">
+      <div class="row">
+        <div class="col-6"></div>
+        <div class="col-6">
+          <table id="second_table">
+            <tr>
+              <th>
+                Номер продукта
+              </th>
+              <th>
+                Название продукта
+              </th>
+              <th>
+                Стоимость продукта
+              </th>
+            </tr>
+            <tr onclick="get_row(this)">
+              <td>
+                0
+              </td>
+              <td>
+                Морковь
+              </td>
+              <td>
+                45
+              </td>
+            </tr>
+            <tr onclick="get_row(this)">
+              <td>
+                1
+              </td>
+              <td>
+                Укроп
+              </td>
+              <td>
+                35
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
