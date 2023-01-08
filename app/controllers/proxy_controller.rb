@@ -2,43 +2,37 @@ require 'open-uri'
 require 'nokogiri'
 
 class ProxyController < ApplicationController
-  before_action :parse_params, only: [:show]
 
   def input; end
 
   def show
-    api_response = URI.open("http://localhost:3000/?format=xml&upper=#{@upper}")
+    @input = params[:upper]
+    api_response = URI.open("http://localhost:3000/?upper=#{@input}&format=xml")
+    where(params[:side], api_response)
+  end
 
-    case @side
+  def where(side, api_response)
+    case side
     when 'server'
       @result = xslt_transform(api_response).to_html
     when 'client-with-xslt'
       render xml: insert_browser_xslt(api_response).to_xml
-    else
+    when 'client'
       render xml: api_response
     end
   end
 
-  private
-
-  BASE_API_URL = 'http://localhost:3000/?format=xml'.freeze
-  XSLT_SERVER_TRANSFORM  = "#{Rails.root}/public/server_transform.xslt".freeze
-  XSLT_BROWSER_TRANSFORM = "#{Rails.root}/public/browser_transform.xslt".freeze
-
-  def parse_params
-    @upper = params[:upper]
-    @side = params[:side]
-  end
-
-  def xslt_transform(data, transform: XSLT_SERVER_TRANSFORM)
+  def xslt_transform(data)
     doc = Nokogiri::XML(data)
-    xslt = Nokogiri::XSLT(File.read(transform))
+    xslt = Nokogiri::XSLT(File.read("#{Rails.root}/public/server_transform.xslt"))
     xslt.transform(doc)
   end
 
-  def insert_browser_xslt(data, transform: XSLT_BROWSER_TRANSFORM)
+  def insert_browser_xslt(data)
     doc = Nokogiri::XML(data)
-    xslt = Nokogiri::XML::ProcessingInstruction.new(doc, 'xml-stylesheet', %(type="text/xsl" href="#{transform}"))
+    xslt = Nokogiri::XML::ProcessingInstruction.new(doc,
+                                                    'xml-stylesheet',
+                                                    'type="text/xsl" href="/browser_transform.xslt"')
     doc.root.add_previous_sibling(xslt)
     doc
   end

@@ -3,7 +3,7 @@
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
   <!--xsl:template говорит о том, что тут будет замена. match показывает, к какой части документа это применимо-->
-  <xsl:template match="/">
+  <xsl:template match="/objects">
     <!--Внутри шаблона пишем наше преобразование-->
 
     <table>
@@ -12,7 +12,6 @@
 
         <tr>
 
-          <th>#</th>
           <th>Десятичное число</th>
           <th>Двоичное представление</th>
 
@@ -21,26 +20,19 @@
       </thead>
 
       <!--Цикл-->
-      <xsl:for-each select="objects/object">
-
-        <!--Создание переменной-->
-        <xsl:variable name="counter" select="position()"/>
+      <xsl:for-each select="object">
 
         <tbody>
 
           <tr>
 
-            <th>
-              <!--Извлекаем значение из переменной (обратите внимание на $)-->
-              <xsl:value-of select="$counter"></xsl:value-of>
-            </th>
-            <th>
+            <td>
               <!--Извлекаем значение из XML-тега-->
               <xsl:value-of select="elem"></xsl:value-of>
-            </th>
-            <th>
+            </td>
+            <td>
               <xsl:value-of select="binary"></xsl:value-of>
-            </th>
+            </td>
 
           </tr>
 

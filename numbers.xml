@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects type="array">
+  <object>
+    <first type="elem">29</first>
+    <second type="binary">31</second>
+    <diff type="integer">2</diff>
+  </object>
+  <object>
+    <first type="elem">41</first>
+    <second type="binary">43</second>
+    <diff type="integer">2</diff>
+  </object>
+</objects>
