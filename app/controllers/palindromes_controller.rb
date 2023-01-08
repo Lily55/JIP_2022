@@ -1,10 +1,16 @@
 class PalindromesController < ApplicationController
-  def input
-  end
+  def input; end
 
   def view
-    @n = params[:n].to_i
-    @results = check_number(@n)
+    @num = params[:num].to_i
+    res = Number.find_by_num(@num)
+    if res
+      @result = ActiveSupport::JSON.decode(res.result)
+    else
+      @result = check_number(@num)
+      res = Number.create num: @num, result: ActiveSupport::JSON.encode(@result)
+      res.save
+    end
   end
 
   private
