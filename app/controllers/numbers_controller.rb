@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Numbers controller
 class NumbersController < ApplicationController
   def input
     # it have to be empty

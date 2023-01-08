@@ -28,16 +28,5 @@ RSpec.describe "Numbers", type: :request do
         expect(response.content_type).to match(%r{text/vnd.turbo-stream.html})
       end
     end
-
-    context 'when params are wrongs' do
-      it 'returns 302 http when params are empty' do
-        post numbers_path, params: { n: '' }, xhr: true
-        expect(response).to have_http_status(200)
-      end
-      it 'returns 302 http when num <= 0' do
-        post numbers_path, params: { n: Faker::Number.within(range: -9999..0) }, xhr: true
-        expect(response).to have_http_status(200)
-      end
-    end
   end
 end

@@ -9,6 +9,6 @@ RSpec.describe 'Static content', type: :system do
     visit root_path
     fill_in :n, with: num_value
     find('#result-btn').click
-    expect(find('#flexible')).to match(/Вы ввели число: #{num_value}/)
+    expect(page).to have_content("Вы ввели число: #{num_value}")
   end
 end
