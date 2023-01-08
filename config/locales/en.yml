@@ -76,7 +76,7 @@ en:
     new_pass: "Create new password"
     new: "New password"
     letter: "The letter was sent!"
-    change: "The password wos changed"
+    change: "The password was changed"
 
   update:
     user: "User was successfully updated!"

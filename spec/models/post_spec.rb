@@ -10,4 +10,8 @@ RSpec.describe Post, type: :model do
     Post.create(title: "Test")
     expect(Post.create(title: "Test").valid?).to eq false
   end
+
+  it "should have a spescial format" do
+    expect(Post.create(title: '""""').valid?).to eq false
+  end
 end

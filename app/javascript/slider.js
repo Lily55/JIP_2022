@@ -29,4 +29,5 @@ window.addEventListener('load', () => {
         counter--;
         slider.style.transform = `translateX(${-stepSize*counter}px)`
     })
+    
 })

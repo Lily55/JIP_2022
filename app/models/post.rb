@@ -4,6 +4,7 @@ class Post < ApplicationRecord
     validates_uniqueness_of :title
     validates :title, :summary, :body, :forwhom, presence: true
     validates :title, length: { maximum: 140}
+    validates :title, format: { with: /\A\w+\s?\w+\z/}
 
     belongs_to :user
 
