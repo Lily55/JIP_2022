@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_19_064806) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_20_191833) do
   create_table "numbers", force: :cascade do |t|
     t.integer "num"
     t.text "result"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["num"], name: "index_numbers_on_num", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -23,6 +24,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_19_064806) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
 end

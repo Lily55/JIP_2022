@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   root 'session#login'
   resources :users
-  get 'palindromes/input'
+
   get 'palindromes/view'
+  get 'input', to: 'palindromes#input'
+
   post 'authorize', to: "session#authorize"
   get 'logout', to: "session#logout"
   get 'login', to: "session#login"

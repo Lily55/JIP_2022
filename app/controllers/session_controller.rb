@@ -2,14 +2,18 @@
 
 # session controller
 class SessionController < ApplicationController
+
   def login; end
 
   def authorize
     user = User.find_by_username(params[:username])
-    return redirect_to_login unless user&.authenticate params[:password]
+    unless user&.authenticate params[:password]
+      flash[:notice] = 'Wrong username or password!'
+      return redirect_to_login
+    end
 
     session[:current_user_id] = user.id
-    redirect_to palindromes_input_path
+    redirect_to input_path
   end
 
   def logout
